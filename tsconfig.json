@@ -3,10 +3,11 @@
     "compilerOptions": {
         "incremental": true,
         "module": "commonjs",
-        "target": "ES5",
+        "target": "ES2021",
 
         "rootDir": "src",
         "moduleResolution": "node",
+        "outDir": "dist",
 
         "isolatedModules": true,
         "allowSyntheticDefaultImports": true,

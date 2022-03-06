@@ -14,3 +14,5 @@
 // )
 export const traversesUpDirectoryRegex =
     /^(((\.[/\\]+)|([^/\\]+[/\\]+)+?\.\.[/\\]+)*\.\.([/\\]+|$))/;
+
+export class FoundryResolver {}

@@ -91,13 +91,21 @@ function configureOptions(pluginData: PluginData, options: BuildOptions): void {
     }
 
     if (typeof options.outbase === "undefined") {
-        throw new Error("FOOOOOOOO"); // TODO
+        throw new Error(
+            `The outbase option must be defined in order for the ${JSON.stringify(
+                pluginData.pluginName
+            )} plugin to locate the location in which imports come from.`
+        );
     }
 
     pluginData.projectRoot = options.outbase;
 
     if (typeof options.outdir === "undefined") {
-        throw new Error("FOOOOOOOO"); // TODO
+        throw new Error(
+            `The outdir option must be defined in order for the ${JSON.stringify(
+                pluginData.pluginName
+            )} plugin to locate where to put imports.`
+        );
     }
 
     pluginData.outdir = nativePath.resolve(options.outdir);

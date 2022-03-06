@@ -12,6 +12,9 @@
         "url": "https://github.com/DavidArchibald/esbuild-foundry-plugin/issues"
     },
     "type": "module",
+    "files": [
+        "dist"
+    ],
     "author": {
         "name": "David Archibald",
         "email": "david@davidarchibald.dev"
@@ -24,6 +27,7 @@
         "@types/node": "^17.0.21",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
+        "@yarnpkg/esbuild-plugin-pnp": "^2.0.1",
         "esbuild": "^0.14.24",
         "eslint": "^8.10.0",
         "eslint-config-airbnb-base": "^15.0.0",
@@ -42,8 +46,8 @@
         "typescript": "~4.5.0"
     },
     "scripts": {
-        "build": "node build.cjs",
-        "build:watch": "node build.cjs",
+        "build": "node build.js",
+        "build:watch": "WATCH=true node build.js",
         "clean": "rm -r ./dist",
         "typecheck": "tsc --noEmit",
         "lint": "eslint --ext .ts,.js,.cjs .",

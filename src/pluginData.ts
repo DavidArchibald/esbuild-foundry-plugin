@@ -2,7 +2,6 @@ import nativePath from "path";
 import type { OnResolveResult } from "esbuild";
 
 import { getFoundryDataPath, getFoundryAppPath } from "./foundryConfig";
-import { getFoundryRootDirEntries } from "./foundryEntries";
 import { FoundryResolver } from "./foundryResolver";
 import { normalize } from "./onResolve";
 
@@ -139,8 +138,7 @@ export function getPluginData(options: Options): PluginData {
         ...(options.foundryPaths ?? {}),
     };
 
-    const rootEntries = getFoundryRootDirEntries(foundryPaths);
-    const resolver = new FoundryResolver(rootEntries);
+    const resolver = new FoundryResolver();
 
     return {
         packageType,
