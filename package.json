@@ -1,6 +1,6 @@
 {
     "name": "esbuild-foundry-plugin",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "A plugin for ESBuild to make working with Foundry modules and systems easier.",
     "license": "MIT",
     "homepage": "https://github.com/DavidArchibald/esbuild-foundry-plugin/",
