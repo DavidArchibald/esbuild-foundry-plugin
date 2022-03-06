@@ -1,7 +1,6 @@
 {
     "include": ["src"],
     "compilerOptions": {
-        "incremental": true,
         "module": "commonjs",
         "target": "ES2021",
 

@@ -46,7 +46,7 @@
         "typescript": "~4.5.0"
     },
     "scripts": {
-        "build": "node build.js",
+        "build": "rm -r dist && node build.js && tsc --declaration --emitDeclarationOnly",
         "build:watch": "WATCH=true node build.js",
         "clean": "rm -r ./dist",
         "typecheck": "tsc --noEmit",

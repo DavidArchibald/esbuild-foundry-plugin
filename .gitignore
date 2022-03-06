@@ -19,7 +19,7 @@ dist
 .eslintcache
 
 # Typescript
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # Junit results
 junit.xml
