@@ -1,0 +1,25 @@
+# IDE
+.idea/
+.vs/
+
+# Yarn 3 gitignore
+yarn-error.log
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Build folders
+dist
+
+# ESLint
+.eslintcache
+
+# Typescript
+tsconfig.tsbuildinfo
+
+# Junit results
+junit.xml

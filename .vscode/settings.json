@@ -1,0 +1,17 @@
+{
+    "editor.tabSize": 4,
+
+    "eslint.nodePath": ".yarn/sdks",
+
+    "jest.jestCommandLine": "yarn test",
+
+    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+
+    "search.exclude": {
+        "**/.yarn": true,
+        "**/.pnp.*": true
+    },
+
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
+}

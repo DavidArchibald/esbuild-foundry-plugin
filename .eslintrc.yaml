@@ -1,0 +1,105 @@
+plugins:
+    - "@typescript-eslint/eslint-plugin"
+    - eslint-plugin-tsdoc
+
+extends:
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    - airbnb-base
+    - airbnb-typescript/base
+    - prettier
+
+parser: "@typescript-eslint/parser"
+parserOptions:
+    project: ./tsconfig.eslint.json
+    tsconfigRootDir: .
+    ecmaVersion: 2021
+    sourceType: module
+
+ignorePatterns:
+    - dist/**
+
+overrides:
+    - files:
+          - "**"
+
+rules:
+    tsdoc/syntax: warn
+
+    class-methods-use-this: off
+    no-underscore-dangle: off
+    no-continue: off
+    no-await-in-loop: off
+    max-classes-per-file: off
+    import/prefer-default-export: off
+
+    no-plusplus:
+        - error
+        - allowForLoopAfterthoughts: true
+
+    func-names:
+        - error
+        - as-needed
+
+    import/extensions:
+        - error
+        - ignorePackages
+        - ts: never
+          tsx: never
+
+    "@typescript-eslint/no-unused-vars":
+        - "error"
+        - argsIgnorePattern: ^_
+
+    "@typescript-eslint/no-namespace": off
+
+    "@typescript-eslint/consistent-type-imports":
+        - error
+        - prefer: type-imports
+
+    "@typescript-eslint/return-await":
+        - error
+        - always
+
+    "@typescript-eslint/lines-between-class-members":
+        - error
+        - exceptAfterSingleLine: true
+
+    "@typescript-eslint/no-use-before-define":
+        - error
+        - functions: false
+          classes: false
+
+    no-param-reassign:
+        - error
+        - ignorePropertyModificationsFor:
+              - build.initialOptions
+
+    import/no-cycle: off
+
+    # From this point there are simply modifications to existing rules.
+
+    # The only change from AirBNB's config is to allow leading underscores.
+    "@typescript-eslint/naming-convention":
+        - error
+        - selector: variable
+          format:
+              - camelCase
+              - PascalCase
+              - UPPER_CASE
+          leadingUnderscore: allow
+        - selector: function
+          format:
+              - camelCase
+              - PascalCase
+          leadingUnderscore: allow
+        - selector: typeLike
+          format:
+              - PascalCase
+          leadingUnderscore: allow
+
+    # Removes for-of/for-in loops from restricted syntax
+    no-restricted-syntax:
+        - error
+        - LabeledStatement
+        - WithStatement
