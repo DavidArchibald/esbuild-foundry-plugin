@@ -39,7 +39,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:17.0.21"],\
             ["@typescript-eslint/eslint-plugin", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:5.13.0"],\
             ["@typescript-eslint/parser", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:5.13.0"],\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:2.0.1"],\
             ["esbuild", "npm:0.14.24"],\
             ["esbuild-node-externals", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:1.4.1"],\
             ["eslint", "npm:8.10.0"],\
@@ -1913,29 +1912,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@yarnpkg/esbuild-plugin-pnp", [\
-        ["npm:2.0.1", {\
-          "packageLocation": "./.yarn/cache/@yarnpkg-esbuild-plugin-pnp-npm-2.0.1-34723f0522-ff081f65e0.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",\
-          "packageDependencies": [\
-            ["@yarnpkg/esbuild-plugin-pnp", "npm:2.0.1"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:2.0.1", {\
-          "packageLocation": "./.yarn/__virtual__/@yarnpkg-esbuild-plugin-pnp-virtual-014c772190/0/cache/@yarnpkg-esbuild-plugin-pnp-npm-2.0.1-34723f0522-ff081f65e0.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",\
-          "packageDependencies": [\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:2.0.1"],\
-            ["@types/esbuild", null],\
-            ["esbuild", "npm:0.14.24"],\
-            ["tslib", "npm:1.14.1"]\
-          ],\
-          "packagePeers": [\
-            "@types/esbuild",\
-            "esbuild"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["JSONStream", [\
         ["npm:1.3.5", {\
           "packageLocation": "./.yarn/cache/JSONStream-npm-1.3.5-1987f2e6dd-2605fa1242.zip/node_modules/JSONStream/",\
@@ -3405,7 +3381,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:17.0.21"],\
             ["@typescript-eslint/eslint-plugin", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:5.13.0"],\
             ["@typescript-eslint/parser", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:5.13.0"],\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:2.0.1"],\
             ["esbuild", "npm:0.14.24"],\
             ["esbuild-node-externals", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:1.4.1"],\
             ["eslint", "npm:8.10.0"],\

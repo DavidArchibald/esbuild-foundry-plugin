@@ -1,9 +1,7 @@
-import nativePath from "path";
 import type { OnResolveResult } from "esbuild";
 
 import { getFoundryDataPath, getFoundryAppPath } from "./foundryConfig";
 import { FoundryResolver } from "./foundryResolver";
-import { normalize } from "./onResolve";
 
 export const pluginName = "foundryResolve";
 
@@ -15,9 +13,6 @@ export type Options = {
 
     /** The name of the module or system. */
     packageName: string;
-
-    /** The root of the project, required to resolve relative imports correctly. */
-    projectRoot: string;
 
     /** Optional, allows fine grained control of how import resolving gets cached. By default every import gets cached. All options are relative to Foundry root. */
     cache?: CacheOptions;
@@ -110,11 +105,6 @@ export type PluginData = {
 export function getPluginData(options: Options): PluginData {
     const { packageType, packageName, cache, importData, debug } = options;
 
-    let { projectRoot } = options;
-    if (!nativePath.isAbsolute(projectRoot)) {
-        projectRoot = nativePath.resolve(projectRoot);
-    }
-
     const {
         disable,
         disableFoundryDataCache,
@@ -144,7 +134,7 @@ export function getPluginData(options: Options): PluginData {
         packageType,
         packageName,
         pluginName,
-        projectRoot: normalize(projectRoot),
+        projectRoot: "",
         entrypoints: {},
         cacheOptions: {
             disable: !!disable,

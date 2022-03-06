@@ -1,10 +1,11 @@
-import esbuild from "esbuild";
-import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
-import { nodeExternalsPlugin } from "esbuild-node-externals";
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const esbuild = require("esbuild");
+const { nodeExternalsPlugin } = require("esbuild-node-externals");
 
 const isWatch = process.env.WATCH === "true";
 
-await esbuild.build({
+esbuild.build({
     entryPoints: ["src/index.ts"],
     outbase: "src",
     outdir: "dist",
@@ -15,5 +16,5 @@ await esbuild.build({
     watch: isWatch,
     format: "cjs",
     platform: "node",
-    plugins: [pnpPlugin(), nodeExternalsPlugin()],
+    plugins: [nodeExternalsPlugin()],
 });

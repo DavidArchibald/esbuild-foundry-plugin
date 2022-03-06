@@ -11,6 +11,7 @@ import {
     onResolveTraversesUp,
     onResolveAbsolute,
     cachedResolve,
+    normalize,
 } from "./onResolve";
 import { configureEntrypoints } from "./entrypoints";
 import { createManifest, setupManifest } from "./foundryManifest";
@@ -98,7 +99,7 @@ function configureOptions(pluginData: PluginData, options: BuildOptions): void {
         );
     }
 
-    pluginData.projectRoot = options.outbase;
+    pluginData.projectRoot = normalize(nativePath.resolve(options.outbase));
 
     if (typeof options.outdir === "undefined") {
         throw new Error(
