@@ -1,5 +1,6 @@
 import esbuild from "esbuild";
 import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
+import { nodeExternalsPlugin } from "esbuild-node-externals";
 
 const isWatch = process.env.WATCH === "true";
 
@@ -14,5 +15,5 @@ await esbuild.build({
     watch: isWatch,
     format: "cjs",
     platform: "node",
-    plugins: [pnpPlugin()],
+    plugins: [pnpPlugin(), nodeExternalsPlugin()],
 });

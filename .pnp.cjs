@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:5.13.0"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:2.0.1"],\
             ["esbuild", "npm:0.14.24"],\
+            ["esbuild-node-externals", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:1.4.1"],\
             ["eslint", "npm:8.10.0"],\
             ["eslint-config-airbnb-base", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:15.0.0"],\
             ["eslint-config-airbnb-typescript", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:16.1.0"],\
@@ -53,6 +54,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-junit", "npm:13.0.0"],\
             ["jsonschema", "npm:1.4.0"],\
             ["lint-staged", "npm:12.3.4"],\
+            ["pinst", "npm:3.0.0"],\
             ["prettier", "npm:2.5.1"],\
             ["ts-jest", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:27.1.3"],\
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=bda367"]\
@@ -3405,6 +3407,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:5.13.0"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:2.0.1"],\
             ["esbuild", "npm:0.14.24"],\
+            ["esbuild-node-externals", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:1.4.1"],\
             ["eslint", "npm:8.10.0"],\
             ["eslint-config-airbnb-base", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:15.0.0"],\
             ["eslint-config-airbnb-typescript", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:16.1.0"],\
@@ -3417,6 +3420,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-junit", "npm:13.0.0"],\
             ["jsonschema", "npm:1.4.0"],\
             ["lint-staged", "npm:12.3.4"],\
+            ["pinst", "npm:3.0.0"],\
             ["prettier", "npm:2.5.1"],\
             ["ts-jest", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:27.1.3"],\
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=bda367"]\
@@ -3519,6 +3523,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/esbuild-netbsd-64-npm-0.14.24-50415ecdec/node_modules/esbuild-netbsd-64/",\
           "packageDependencies": [\
             ["esbuild-netbsd-64", "npm:0.14.24"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["esbuild-node-externals", [\
+        ["npm:1.4.1", {\
+          "packageLocation": "./.yarn/cache/esbuild-node-externals-npm-1.4.1-9a92853882-418a19ed4e.zip/node_modules/esbuild-node-externals/",\
+          "packageDependencies": [\
+            ["esbuild-node-externals", "npm:1.4.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:1.4.1", {\
+          "packageLocation": "./.yarn/__virtual__/esbuild-node-externals-virtual-0cc3f73d05/0/cache/esbuild-node-externals-npm-1.4.1-9a92853882-418a19ed4e.zip/node_modules/esbuild-node-externals/",\
+          "packageDependencies": [\
+            ["esbuild-node-externals", "virtual:822800da91ba9f841f94453e7a437712b844ad681cdb2bca648f62ca8d1a0b9c2899b8e9c906a89cd1d3214e83b94b8597e0d0ebac4fd76b080f105f0613d4eb#npm:1.4.1"],\
+            ["@types/esbuild", null],\
+            ["esbuild", "npm:0.14.24"],\
+            ["find-up", "npm:5.0.0"],\
+            ["tslib", "npm:2.3.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/esbuild",\
+            "esbuild"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6680,6 +6708,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/picomatch-npm-2.3.1-c782cfd986-050c865ce8.zip/node_modules/picomatch/",\
           "packageDependencies": [\
             ["picomatch", "npm:2.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pinst", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/pinst-npm-3.0.0-5d2b6c1dda-4ae48a6a60.zip/node_modules/pinst/",\
+          "packageDependencies": [\
+            ["pinst", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
