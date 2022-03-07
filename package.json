@@ -4,7 +4,7 @@
     "files": [
         "dist"
     ],
-    "version": "0.1.6",
+    "version": "0.2.0",
     "description": "A plugin for ESBuild to make working with Foundry modules and systems easier.",
     "license": "MIT",
     "homepage": "https://github.com/DavidArchibald/esbuild-foundry-plugin/",
