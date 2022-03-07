@@ -23,6 +23,12 @@ export type Options = {
     /** Whether to check Foundry related paths resolve or not. This means if your module imports a file such as `../modules/package/file.xyz` it must exist in the local file system. Checks all by default, set to `false` to disable all checks. */
     importData?: Imports;
 
+    /** TODO Better CI Support, for now this option just disables checking imports. */
+    ci?: boolean;
+
+    /** Defaults to /\.(html|hbs)$/, matches which files counts as templates. This is required to ensure that the import value is correct. */
+    templatesFilter?: RegExp;
+
     /** Optional, whether to display debug logs or not. */
     debug?: boolean;
 };
@@ -87,8 +93,9 @@ export type PluginData = {
     pluginName: string;
     entrypoints: Entrypoints;
     cacheOptions: CacheOptions;
-    foundryPaths: InputFoundryPaths;
+    foundryPaths?: InputFoundryPaths | undefined;
     imports: Imports;
+    templatesFilter: RegExp;
     debug: boolean;
 
     projectRoot: string;
@@ -103,7 +110,16 @@ export type PluginData = {
 };
 
 export function getPluginData(options: Options): PluginData {
-    const { packageType, packageName, cache, importData, debug } = options;
+    const {
+        packageType,
+        packageName,
+        cache,
+        importData,
+        templatesFilter,
+        debug,
+    } = options;
+
+    const ci = !!options.ci;
 
     const {
         disable,
@@ -121,12 +137,14 @@ export function getPluginData(options: Options): PluginData {
     const log = debug ? console.log : () => {};
 
     const { dataPath, appPath } = options.foundryPaths ?? {};
-    const foundryPaths = {
-        dataPath: getFoundryDataPath(dataPath, log),
-        appPath: getFoundryAppPath(appPath, log),
+    const foundryPaths = ci
+        ? undefined
+        : {
+              dataPath: getFoundryDataPath(dataPath, log),
+              appPath: getFoundryAppPath(appPath, log),
 
-        ...(options.foundryPaths ?? {}),
-    };
+              ...(options.foundryPaths ?? {}),
+          };
 
     const resolver = new FoundryResolver();
 
@@ -155,6 +173,7 @@ export function getPluginData(options: Options): PluginData {
         foundryPaths,
         outdir: "",
         resolver,
+        templatesFilter: templatesFilter ?? /\.(html|hbs)$/,
         debug: !!debug,
         log,
     };

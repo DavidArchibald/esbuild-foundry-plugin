@@ -138,7 +138,9 @@ type ForEachCallback = (
     manifestKey: string,
     index: number,
     isPathObj: boolean
-) => unknown | undefined;
+) => MaybeAsync<unknown | undefined>;
+
+type MaybeAsync<T> = T | Promise<T>;
 
 type FirstTwo<T extends unknown[]> = T extends [
     infer One,
@@ -315,6 +317,13 @@ export async function createManifest(
 ): Promise<void> {
     const { manifestJSON, localImports } = pluginData.cachedManifest ?? {};
 
+    if (typeof manifestJSON === "undefined") {
+        // This shouldn't happen if the prior steps have run correctly.
+        throw new Error(
+            "The manifest JSON has not been properly processed. Please report this error."
+        );
+    }
+
     const { metafile } = result;
 
     const inputsToOutputs = getInputsToOutputs(pluginData, metafile);
@@ -322,11 +331,14 @@ export async function createManifest(
     const outputs: Record<string, string> = {};
     const localImportsSet = new Set(localImports);
 
-    const finalManifest = JSON.parse(JSON.stringify(manifestJSON));
-    forEachManifestImports(
+    const finalManifest: typeof manifestJSON = JSON.parse(
+        JSON.stringify(manifestJSON)
+    );
+
+    await forEachManifestImports(
         finalManifest,
         async (_keyPath, importPath, manifestKey, index, isPathObj) => {
-            const importArr = finalManifest[manifestKey];
+            const importArr = finalManifest[manifestKey] as unknown[];
             const esbuildOutput = inputsToOutputs[importPath];
 
             // ESBuild has no info for us.
@@ -369,7 +381,7 @@ export async function createManifest(
 
             // Update the path.
             if (isPathObj) {
-                importArr[index].path = outputPath;
+                (importArr[index] as { path: unknown }).path = outputPath;
             } else {
                 importArr[index] = outputPath;
             }

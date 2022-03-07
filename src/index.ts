@@ -12,10 +12,12 @@ import {
     onResolveAbsolute,
     cachedResolve,
     normalize,
+    onLoadFoundryImport,
 } from "./onResolve";
 import { configureEntrypoints } from "./entrypoints";
 import { createManifest, setupManifest } from "./foundryManifest";
 import { traversesUpDirectoryRegex } from "./foundryResolver";
+import { onLoadTemplates, onResolveTemplates } from "./foundryTemplates";
 
 export const foundryPlugin = (options: Options): Plugin => {
     const pluginData = getPluginData(options);
@@ -30,7 +32,8 @@ export const foundryPlugin = (options: Options): Plugin => {
 
             log("Build with options:", build.initialOptions);
 
-            // Foundry will put your code within the path `$ROUTE_PREFIX/modules/<name>` or `$ROUTE_PREFIX/systems/<name>`, this means to access other other Foundry files all (normalized) imports must traverse up at least one directory.
+            // Foundry will put your code within the path `$ROUTE_PREFIX/modules/<name>` or `$ROUTE_PREFIX/systems/<name>`.
+            // This means to access other Foundry files all (normalized) imports must traverse up at least one directory.
             build.onResolve(
                 { filter: traversesUpDirectoryRegex },
                 cachedResolve(pluginData, (args) =>
@@ -52,6 +55,21 @@ export const foundryPlugin = (options: Options): Plugin => {
                 cachedResolve(pluginData, (args) =>
                     onResolveAbsolute(pluginData, args)
                 )
+            );
+
+            build.onLoad(
+                { filter: /.*/, namespace: "foundry-import" },
+                onLoadFoundryImport
+            );
+
+            build.onResolve(
+                { filter: pluginData.templatesFilter },
+                onResolveTemplates
+            );
+
+            build.onLoad(
+                { filter: /.*/, namespace: "foundry-template" },
+                (args) => onLoadTemplates(pluginData, args)
             );
 
             build.onStart(() => setupManifest(pluginData, build));

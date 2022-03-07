@@ -1,4 +1,9 @@
-import type { OnResolveArgs, OnResolveResult } from "esbuild";
+import type {
+    OnResolveArgs,
+    OnResolveResult,
+    OnLoadArgs,
+    OnLoadResult,
+} from "esbuild";
 import nativePath, { posix as path } from "path";
 import type { PluginData } from "./pluginData";
 
@@ -81,7 +86,7 @@ export function onResolveTraversesUp(
     }
 
     // Other Foundry imports are "external", Foundry provides them so we don't bundle them.
-    const outputData = getFoundryImport(path.join(resolvesTo));
+    const outputData = getFoundryImport(args, path.join(resolvesTo));
 
     log("Foundry relative import, output:", outputData);
 
@@ -121,7 +126,7 @@ export function onResolveAbsolute(
 
     // getFoundry import expects a path relative to Foundry's root.
     // We can provide that by making this root path relative.
-    const output = getFoundryImport(path.join(".", importPath));
+    const output = getFoundryImport(args, path.join(".", importPath));
 
     log("Rewrote absolute path:", output);
 
@@ -183,11 +188,35 @@ export function normalize(p: string) {
     return normalizedPath.split(nativePath.sep).join("/");
 }
 
-function getFoundryImport(foundryRootRelative: string): OnResolveResult {
+function getFoundryImport(
+    args: OnResolveArgs,
+    foundryRootRelative: string
+): OnResolveResult {
+    // TODO: Actually check if the file exists in Foundry.
+    // require-call and require-resolve omitted due to ESM requirements.
+    if (args.kind === "import-statement" || args.kind === "dynamic-import") {
+        return {
+            namespace: "foundry-import",
+            pluginData: {
+                foundryImport: foundryRootRelative,
+                // resolveArgs: args,
+            },
+        };
+    }
+
     return {
-        // TODO: Adjust to be relative to output path, this only works if the output is one folder deep
-        // TODO: Actually check if the file exists in Foundry instead of blanket marking as external.
-        path: path.join("../../..", foundryRootRelative),
+        path: args.path,
         external: true,
+    };
+}
+
+export function onLoadFoundryImport(args: OnLoadArgs): OnLoadResult {
+    const foundryImport = args.pluginData.foundryImport as string;
+
+    return {
+        contents: `export default await import(getRoute(${JSON.stringify(
+            foundryImport
+        )}))`,
+        loader: "js",
     };
 }
