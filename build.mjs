@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
-const esbuild = require("esbuild");
-const { nodeExternalsPlugin } = require("esbuild-node-externals");
+import esbuild from "esbuild";
+import { nodeExternalsPlugin } from "esbuild-node-externals";
 
 const isWatch = process.env.WATCH === "true";
 
-esbuild.build({
+await esbuild.build({
     entryPoints: ["src/index.ts"],
     outbase: "src",
     outdir: "dist",

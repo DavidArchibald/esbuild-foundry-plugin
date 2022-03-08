@@ -102,7 +102,7 @@ async function normalizeManifest(
     const errors: OnStartResult["errors"] = [];
     const localImports: string[] = [];
 
-    updateManifestImports(manifestJSON, async (keyPath, importPath) => {
+    await updateManifestImports(manifestJSON, async (keyPath, importPath) => {
         log(
             `\nImport from ${JSON.stringify(
                 manifestFile
@@ -237,6 +237,7 @@ async function resolveManifestImport(
     // Paths won't be resolved against the filesystem unless `./` is at the beginning.
     // However normalization removes `./` at the beginning and imports aren't required to have them, so we add it back here.
     // See https://esbuild.github.io/plugins/#resolve for further information.
+
     const relativeImportData = await build.resolve(`./${normalizedPath}`, {
         resolveDir: pluginData.projectRoot,
     });
